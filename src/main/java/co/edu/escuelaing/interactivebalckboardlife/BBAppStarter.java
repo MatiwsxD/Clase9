@@ -10,10 +10,16 @@ import java.util.Collections;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
+/**
+ * Clase principal de ejecución de la applicación.
+ * @author Luis Daniel Benavides Navarro.
+ */
 @SpringBootApplication
 public class BBAppStarter {
-
+    /**
+     * Ejecutador de Spring Boot.
+     * @param args
+     */
     public static void main(String[] args){
         SpringApplication app = new SpringApplication(BBAppStarter.class);
         
@@ -21,7 +27,10 @@ public class BBAppStarter {
           .singletonMap("server.port", getPort()));
         app.run(args);
     }
-
+    /**
+     * Genera el puerto con el cual se ejecuta la app.
+     * @return numero de puerto.
+     */
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));

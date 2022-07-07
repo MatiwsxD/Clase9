@@ -19,6 +19,10 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import org.springframework.stereotype.Component;
 
+/**
+ * Clase que establece el servicio de usuario y app.
+ * @author Luis Daniel Benavides Navarro.
+ */
 @Component
 @ServerEndpoint("/bbService")
 public class BBEndpoint {
@@ -44,13 +48,20 @@ public class BBEndpoint {
             logger.log(Level.INFO, e.toString());
         }
     }
-
+    /**
+     * Se encarga de recibir los procesos de la App.
+     * @param message Mensaje recibido.
+     * @param session Sesion ejecutada.
+     */
     @OnMessage
     public void processPoint(String message, Session session) {
         logger.log(Level.INFO, "Point received:" + message + ". From session: " + session);
         this.send(message);
     }
-
+    /**
+     * Se encarga de abrir la conexion del servicio.
+     * @param session Sesion ejecutada.
+     */
     @OnOpen
     public void openConnection(Session session) {
         /* Register this connection in the queue */
@@ -64,7 +75,10 @@ public class BBEndpoint {
         }
     }
 
-
+    /**
+     * Se encarga de la cerrar la conexcion del servicio.
+     * @param session Sesion ejecutada.
+     */
     @OnClose
     public void closedConnection(Session session) {
         /* Remove this connection from the queue */
@@ -72,6 +86,11 @@ public class BBEndpoint {
         logger.log(Level.INFO, "Connection closed for session " + session);
     }
 
+    /**
+     * Se encarga se la notificacion de errores en la ejecucion de la conexion.
+     * @param session Sesion ejecutada.
+     * @param t Mensaje recibido.
+     */
     @OnError
     public void error(Session session, Throwable t) {
         /* Remove this connection from the queue */

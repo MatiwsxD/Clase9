@@ -8,10 +8,16 @@ package co.edu.escuelaing.interactivebalckboardlife.controllers;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * Clase controladora del estado de la app.
+ * @author Luis Daniel Benavides Navarro.
+ */
 @RestController
 public class DrawingServiceController {
-
+    /**
+     * Ejecuta comando para ejecutar el estado de la app.
+     * @return Estado en que se encuentra la app.
+     */
     @GetMapping("/status")
     public String status() {
         return "{\"status\":\"Greetings from Spring Boot. " +

@@ -15,11 +15,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-
+/**
+ * Clase de seguridad de la app.
+ * @author Luis Daniel Benavides Navarro.
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+        /**
+         * Se encarga de la seguridad de login y redireccion.
+         * @param http Pagina de seguridad.
+         * @throws Exception No encontrar pagina.
+         */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -35,7 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll();
 	}
 
-
+        /**
+         * Administra usuario y contraseña del usuario.
+         * @return Usuario y contraseña para almacenar en la memoria cahce.
+         */
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
